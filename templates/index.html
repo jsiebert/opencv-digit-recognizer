@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
 
 <!--- Stylesheet start --->
 <style>
@@ -39,12 +39,12 @@ h1{
 <script type="text/javascript">
 
     // Drawing is done on the Canvas
-    var canvas, ctx, flag = false,
-        prevX = 0, 
+    let canvas, ctx, flag = false,
+        prevX = 0,
         currX = 0,
         prevY = 0,
         currY = 0;
-        
+
 
     function init() {
         // Set up canvas and line styles to draw
@@ -57,7 +57,7 @@ h1{
         ctx.lineCap = 'round';
         w = canvas.width;
         h = canvas.height;
-        
+
         // Add mouse event listeners to the canvas
         canvas.addEventListener("mousemove", function (e) {
             mouseEventHandler('move', e)
@@ -119,7 +119,7 @@ h1{
     // Mouse event handler
     function mouseEventHandler(res, e) 
     {
-        if (res == 'down') {
+        if (res === 'down') {
             prevX = currX;
             prevY = currY;
             currX = e.clientX - canvas.offsetLeft;
@@ -127,10 +127,10 @@ h1{
     
             flag = true;
         }
-        if (res == 'up' || res == "out") {
+        if (res === 'up' || res === "out") {
             flag = false;
         }
-        if (res == 'move') {
+        if (res === 'move') {
             if (flag) {
                 prevX = currX;
                 prevY = currY;
@@ -147,8 +147,8 @@ h1{
         <div id="canvas-container">
             <h1> Digit Recognizer</h1>
             <div style="text-align: center; padding: 10px;">
-                <input type="button" value="Clear" id="clr" size="30" onclick="erase()" class="red button">
-                <input type="button" value="Upload" id="clr" size="30" onclick="upload()" class="green button">
+                <input type="button" value="Clear" id="clear" size="30" onclick="erase()" class="red button">
+                <input type="button" value="Upload" id="upload" size="30" onclick="upload()" class="green button">
             </div>
             <canvas id="can" width="256" height="256"></canvas>
             <p id="output">Scribble a digit and press upload.</p>
